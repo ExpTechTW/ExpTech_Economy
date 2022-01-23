@@ -21,7 +21,7 @@ public class shop {
         data.addProperty("Type", "checklist");
         data.addProperty("FormatVersion", 1);
         JsonObject response = network.Post(data);
-        System.out.println(response);
+        if(response==null) return;
         if (response.get("response").getAsJsonArray().size() != 0) {
             JsonArray handler = response.get("response").getAsJsonArray();
             for (int i = 0; i < handler.size(); i++) {
@@ -43,8 +43,20 @@ public class shop {
                 } else if (Objects.equals(handlerData.get("function").getAsString(), "sell")) {
                     Player player1 = null;
                     for (int j = 0; j < handlerData.get("player").getAsJsonArray().size(); j++) {
-                        if (Bukkit.getPlayer(handlerData.get("player").getAsJsonArray().get(i).getAsString()) != null) {
-                            player1 = Bukkit.getPlayer(handlerData.get("player").getAsJsonArray().get(i).getAsString());
+                        try {
+                            if (Bukkit.getPlayer(handlerData.get("player").getAsJsonArray().get(i).getAsString()) != null) {
+                                player1 = Bukkit.getPlayer(handlerData.get("player").getAsJsonArray().get(i).getAsString());
+                            }
+                        }catch (IndexOutOfBoundsException e){
+                            JsonElement Data1 = JsonParser.parseString(DATA.toString());
+                            JsonObject data1 = Data1.getAsJsonObject();
+                            data1.addProperty("Type", "sellcheck");
+                            data1.addProperty("FormatVersion", 1);
+                            data1.addProperty("item", handlerData.get("item").getAsString());
+                            data1.addProperty("amount", handlerData.get("amount").getAsInt());
+                            data1.addProperty("id", handlerData.get("id").getAsInt());
+                            data1.addProperty("status", false);
+                            network.Post(data1);
                         }
                     }
                     if (player1 == null) return;
