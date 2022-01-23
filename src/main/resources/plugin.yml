@@ -1,0 +1,11 @@
+name: ExpTech_Economy
+version: 22w04-pre1
+author: whes1015
+main: main.main
+api-version: 1.18
+
+commands:
+  ec:
+    description: 控制 ExpTech_Economy 插件
+    usage: /dr <args>
+    permission: exptech.admin
