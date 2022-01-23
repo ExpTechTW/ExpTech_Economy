@@ -70,7 +70,7 @@ public class shop {
                     data1.addProperty("id", handlerData.get("id").getAsInt());
                     ItemStack itemStack = new ItemStack(Material.valueOf(handlerData.get("item").getAsString()), handlerData.get("amount").getAsInt());
                     if (player1.getInventory().contains(itemStack)) {
-                        player1.getInventory().remove(itemStack);
+                        player1.getInventory().clear(player1.getInventory().first(itemStack));
                         data1.addProperty("status", true);
                     } else {
                         data1.addProperty("status", false);
