@@ -15,6 +15,7 @@ import static main.whes1015.VersionCode;
 public class main extends JavaPlugin implements Listener {
 
     public static Integer Support=22031;
+    public static Integer stop=0;
 
     @Override
     public void onEnable() {
@@ -31,6 +32,8 @@ public class main extends JavaPlugin implements Listener {
 
     @Override
     public void onDisable(){
+        timer.timer.cancel();
+        logger.log("INFO", "Economy_timer", "Timer Cancel");
         logger.log("INFO","Economy_onDisable","Closing! Version: "+getDescription().getVersion());
     }
 }

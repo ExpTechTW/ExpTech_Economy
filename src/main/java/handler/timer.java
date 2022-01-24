@@ -7,6 +7,7 @@ import static function.datacheck.DataCheck;
 import static function.shop.Shop;
 
 public class timer extends TimerTask {
+    public static Timer timer = new Timer();
 
     public void run() {
         DataCheck();
@@ -14,7 +15,6 @@ public class timer extends TimerTask {
     }
 
     public static void main() {
-        Timer timer = new Timer();
         timer.schedule(new timer(), 1000, 5000);
     }
 }
