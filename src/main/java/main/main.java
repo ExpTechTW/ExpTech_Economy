@@ -19,15 +19,15 @@ public class main extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
-        if(VersionCode>=Support) {
-            Objects.requireNonNull(getCommand("ec")).setExecutor(new commands(this));
-            getServer().getPluginManager().registerEvents(new eventlistener(), this);
-            logger.log("INFO", "Economy_onEnable", "Loading Success! - Designed by ExpTech.tw!");
-            timer.main();
-        }else {
-            logger.log("WARN","Economy_onEnable","Please update your Core version");
-            Bukkit.getPluginManager().disablePlugins();
-        }
+            if (VersionCode >= Support) {
+                Objects.requireNonNull(getCommand("ec")).setExecutor(new commands(this));
+                getServer().getPluginManager().registerEvents(new eventlistener(), this);
+                logger.log("INFO", "Economy_onEnable", "Loading Success! - Designed by ExpTech.tw!");
+                timer.main();
+            } else {
+                logger.log("WARN", "Economy_onEnable", "Please update your Core version");
+                Bukkit.getPluginManager().disablePlugins();
+            }
     }
 
     @Override

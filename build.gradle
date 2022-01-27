@@ -21,7 +21,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.exptech.core:library:22w03-pre1'
+    implementation 'org.exptech.core:library:1.0'
     implementation 'com.google.code.gson:gson:2.8.9'
     compileOnly 'org.spigotmc:spigot-api:1.18-R0.1-SNAPSHOT'
 }
